@@ -1,17 +1,25 @@
 package Group16_Project_IS1220_part1_Hammond_Bismut.menu;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.HashMap;
 
 public class Menu {
-	private ArrayList<Meal> meals;
+	private HashSet<Meal> meals;
 	private Meal mealUnderConstruction;
 	private HashMap<Meal,Number> specialOffers;
 	
 	public Menu() {
 		super();
-		meals = new ArrayList<Meal>();
+		meals = new HashSet<Meal>();
 		specialOffers = new HashMap<Meal, Number>();
+	}
+
+	public HashSet<Meal> getMeals() {
+		return meals;
+	}
+
+	public void setMeals(HashSet<Meal> meals) {
+		this.meals = meals;
 	}
 
 	public void createMeal(String mealName, double price){
@@ -62,6 +70,16 @@ public class Menu {
 	public void showSpecialOffers(){
 		for(Meal meal : specialOffers.keySet()){
 			System.out.println(meal.getName() + " : " + specialOffers.get(meal) + " €");
+		}
+	}
+	
+	public void showMenu(){
+		for(Meal meal :meals){
+			if(!specialOffers.containsKey(meal)){
+				System.out.println(meal.getName() + " : " + meal.getPrice() + " €");
+			}else{
+				System.out.println(meal.getName() + " : " + specialOffers.get(meal) + " € -- Offre spéciale");
+			}
 		}
 	}
 }

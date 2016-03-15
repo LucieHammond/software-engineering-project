@@ -1,6 +1,9 @@
 package Group16_Project_IS1220_part1_Hammond_Bismut.users;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+
+import Group16_Project_IS1220_part1_Hammond_Bismut.menu.Meal;
 
 public class Client extends User {
 	
@@ -8,12 +11,14 @@ public class Client extends User {
 	private boolean agreement;
 	private enum Contact {email,phone}
 	private HashMap<Contact,String> contactInfos;
-	//private ArrayList<Meal> favouriteMeals;
+	private ArrayList<Meal> favouriteMeals;
 	//private FidelityCard card;
 
 	public Client(String firstname, String lastname, String username,
 			String password) {
 		super(firstname, lastname, username, password);
+		contactInfos = new HashMap<Contact,String>();
+		favouriteMeals = new ArrayList<Meal>();
 	}
 
 	public String getAddress() {
