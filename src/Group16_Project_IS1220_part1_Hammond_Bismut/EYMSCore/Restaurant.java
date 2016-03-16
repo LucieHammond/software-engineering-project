@@ -3,6 +3,8 @@ package Group16_Project_IS1220_part1_Hammond_Bismut.EYMSCore;
 import java.util.HashSet;
 
 import Group16_Project_IS1220_part1_Hammond_Bismut.menu.Menu;
+import Group16_Project_IS1220_part1_Hammond_Bismut.menu.MenuManager;
+import Group16_Project_IS1220_part1_Hammond_Bismut.orders.OrderManager;
 import Group16_Project_IS1220_part1_Hammond_Bismut.users.*;
 
 public class Restaurant {
@@ -10,6 +12,7 @@ public class Restaurant {
 	private HashSet<Client> clients;
 	private HashSet<Chef> chefs;
 	private User currentUser;
+	private Activity currentActivity;
 	private Client clientUnderRegistration;
 	
 	public Restaurant() {
@@ -66,11 +69,13 @@ public class Restaurant {
 		else
 			System.out.println("Ce chef est déjà enregistré dans le système");
 		currentUser = chef;
+		currentActivity = new MenuManager(this.menu);
 	}
 	
 	public void registerClient(String firstname, String lastname, String username, String password){
 		Client client = new Client(firstname, lastname, username, password);
 		clientUnderRegistration = client;
+		currentActivity = new Registration(client);
 	}
 	
 	public void saveAccount(){
@@ -84,6 +89,7 @@ public class Restaurant {
 			else
 				System.out.println("Ce client est déjà enregistré dans le système");
 			currentUser = clientUnderRegistration;
+			currentActivity = new OrderManager(clientUnderRegistration, this);
 			clientUnderRegistration = null;
 		}
 	}
@@ -97,9 +103,8 @@ public class Restaurant {
 			if(client.getUsername().equals(username) && client.getPassword().equals(password)){
 				System.out.println("Bonjour " + client.getFirstname() + " " + client.getLastname() + 
 						"!\nBienvenue sur l'interface client de notre système ");
-				System.out.println("\nVoici les plats disponibles :");
-				menu.showMenu();
 				currentUser = client;
+				currentActivity = new OrderManager(client, this);
 				return true;
 			}
 		}
@@ -107,9 +112,8 @@ public class Restaurant {
 			if(chef.getUsername().equals(username) && chef.getPassword().equals(password)){
 				System.out.println("Bonjour chef " + chef.getFirstname() + " " + chef.getLastname() + 
 						".\nBienvenue sur l'interface administrateur de notre système ");
-				System.out.println("\nVoici les plats disponibles :");
-				menu.showMenu();
 				currentUser = chef;
+				currentActivity = new MenuManager(this.menu);
 				return true;
 			}
 		}
@@ -119,5 +123,6 @@ public class Restaurant {
 	
 	public void logout(){
 		currentUser = null;
+		currentActivity = null;
 	}
 }

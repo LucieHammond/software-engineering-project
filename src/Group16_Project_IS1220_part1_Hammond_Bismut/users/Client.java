@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import Group16_Project_IS1220_part1_Hammond_Bismut.menu.Meal;
+import Group16_Project_IS1220_part1_Hammond_Bismut.fidelitycard.*;
 
 public class Client extends User {
 	
@@ -12,13 +13,15 @@ public class Client extends User {
 	private enum Contact {email,phone}
 	private HashMap<Contact,String> contactInfos;
 	private ArrayList<Meal> favouriteMeals;
-	//private FidelityCard card;
+	private FidelityCard card;
+	private enum CardType {basic,point,lottery}
 
 	public Client(String firstname, String lastname, String username,
 			String password) {
 		super(firstname, lastname, username, password);
 		contactInfos = new HashMap<Contact,String>();
 		favouriteMeals = new ArrayList<Meal>();
+		card = new BasicCard();
 	}
 
 	public String getAddress() {
@@ -35,6 +38,41 @@ public class Client extends User {
 
 	public void associateAgreement(boolean agreement) {
 		this.agreement = agreement;
+	}
+	
+	public HashMap<Contact, String> getContactInfos() {
+		return contactInfos;
+	}
+
+	public void setContactInfos(HashMap<Contact, String> contactInfos) {
+		this.contactInfos = contactInfos;
+	}
+
+	public FidelityCard getCard() {
+		return card;
+	}
+
+	public void setCard(FidelityCard card) {
+		this.card = card;
+	}
+
+	public void setAgreement(boolean agreement) {
+		this.agreement = agreement;
+	}
+
+	public void associateCard(CardType type) {
+		switch(type)
+		{
+			case basic:
+				card = new BasicCard();
+				break;
+			case point:
+				card = new PointCard();
+				break;
+			case lottery:
+				card = new LotteryCard();
+				break;
+		}
 	}
 
 	@Override
