@@ -8,12 +8,12 @@ import java.util.HashMap;
 
 import org.junit.Test;
 
-import Group16_Project_IS1220_part2_Hammond_Bismut.fidelitycard.*;
 import Group16_Project_IS1220_part2_Hammond_Bismut.menu.Meal;
 import Group16_Project_IS1220_part2_Hammond_Bismut.users.Chef;
 import Group16_Project_IS1220_part2_Hammond_Bismut.users.Client;
 import Group16_Project_IS1220_part2_Hammond_Bismut.users.Client.CardType;
 import Group16_Project_IS1220_part2_Hammond_Bismut.users.Client.Contact;
+import Group16_Project_IS1220_part2_Hammond_Bismut.fidelitycard.*;
 
 public class ClientTest {
 

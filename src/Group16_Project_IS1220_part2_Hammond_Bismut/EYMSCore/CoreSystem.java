@@ -31,14 +31,13 @@ public class CoreSystem{
 	 */
 	private HashSet<Client> clients;
 	/**
+	 * Le restaurant sur lequel le système est ouvert
+	 */
+	private Restaurant actualRestaurant;
+	/**
 	 * Le système étant unique, on le représente par un singleton
 	 */
 	private static CoreSystem sharedInstance;
-	
-	/**
-	 * Le restaurant sur lequel le système est allumé
-	 */
-	private Restaurant actualRestaurant;
 	
 	/**
 	 * Constructeur du système. Il est privé car le système est un singleton.
@@ -119,22 +118,6 @@ public class CoreSystem{
 	
 	/**
 	 * Getter
-	 * @return le restaurant sur lequel le système est allumé
-	 */
-	public Restaurant getActualRestaurant() {
-		return actualRestaurant;
-	}
-
-	/**
-	 * Setter
-	 * @param actualRestaurant le restaurant sur lequel le système est allumé
-	 */
-	public void setActualRestaurant(Restaurant actualRestaurant) {
-		this.actualRestaurant = actualRestaurant;
-	}
-
-	/**
-	 * Getter
 	 * @return la liste des clients qui se sont inscrits
 	 */
 	public HashSet<Client> getClients() {
@@ -147,6 +130,22 @@ public class CoreSystem{
 	 */
 	public void setClients(HashSet<Client> clients) {
 		this.clients = clients;
+	}
+
+	/**
+	 * Getter
+	 * @return le restaurant sur lequel le système est en train de tourer
+	 */
+	public Restaurant getActualRestaurant() {
+		return actualRestaurant;
+	}
+
+	/**
+	 * Setter
+	 * @param actualRestaurant le restaurant sur lequel le système fonctionne
+	 */
+	public void setActualRestaurant(Restaurant actualRestaurant) {
+		this.actualRestaurant = actualRestaurant;
 	}
 
 	/**
@@ -175,7 +174,7 @@ public class CoreSystem{
 		for(Restaurant restaurant : restaurants){
 			if(restaurant.getName().equalsIgnoreCase(restaurantName)){
 				System.out.println("Bienvenue au restaurant " + restaurant.getName() + " !");
-				actualRestaurant = restaurant;
+				setActualRestaurant(restaurant);
 				return true;
 			}
 		}
@@ -202,7 +201,7 @@ public class CoreSystem{
 			system = CoreSystem.systemTurnOn();
 			// On allume le système sur le restaurant Sun Cafe précédemment initialisé et rempli
 			if(system.openInRestaurant("Le Sun Cafe"))
-				restaurant= system.getActualRestaurant();
+				restaurant = system.getActualRestaurant();
 			break;
 		case 2:
 			// Test case n°2 : Inscription d'un client
@@ -234,7 +233,6 @@ public class CoreSystem{
 				orderManager.personalizeMeal("Tartiflette", "Vin blanc", 1);
 				orderManager.showModifications();
 				orderManager.saveModifications();
-				orderManager.addToFavouriteMeals("Tartiflette");
 			}
 			restaurant.logout();
 			break;
@@ -431,11 +429,11 @@ public class CoreSystem{
 			System.out.println("-----------------------------------------------------------");
 			restaurant.login("bob2005", "333333");
 			restaurant.logout();
-			Restaurant restaurant2 = null;
-			if(system.openInRestaurant("Le Parapente"))
-				restaurant2 = system.getActualRestaurant();
-			restaurant2.login("bob2005", "333333");
-			restaurant2.logout();
+			if(system.openInRestaurant("Le Parapente")){
+				Restaurant restaurant2 = system.getActualRestaurant();
+				restaurant2.login("bob2005", "333333");
+				restaurant2.logout();
+			}
 			break;
 		}
 				
@@ -447,14 +445,14 @@ public class CoreSystem{
 		
 		initializeSituation();
 		
-		executeScenario(0);
+		executeScenario(1);
 	}
 	
 	/**
 	 * Cette méthode permet d'initialiser le système afin de mettre en place une situation initiale qui 
 	 * servira de base pour les scénarios d'utilisation
 	 */
-	protected static void initializeSituation(){
+	public static void initializeSituation(){
 		/* Toutes les actions suivantes sont effectuées sans utiliser les commandes de base pour que le 
 		 * code reste muet. ca le rend aussi plus compliqué
 		 */
@@ -597,3 +595,4 @@ public class CoreSystem{
 		
 	}
 }
+

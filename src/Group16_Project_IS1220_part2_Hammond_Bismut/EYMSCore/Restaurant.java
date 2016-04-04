@@ -186,8 +186,7 @@ public class Restaurant {
 				System.out.println("Le chef " + firstname + " " + lastname + " a bien été ajouté");
 			else
 				System.out.println("Ce chef est déjà enregistré dans le système");
-			currentUser = chef;
-			currentActivity = new MenuManager(this.menu);
+			login(username,password);
 		}catch(IllegalArgumentException e){}
 	}
 	

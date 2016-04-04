@@ -4,9 +4,9 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 import Group16_Project_IS1220_part2_Hammond_Bismut.EYMSCore.Restaurant;
-import Group16_Project_IS1220_part2_Hammond_Bismut.fidelitycard.*;
 import Group16_Project_IS1220_part2_Hammond_Bismut.menu.Meal;
 import Group16_Project_IS1220_part2_Hammond_Bismut.users.Client;
+import Group16_Project_IS1220_part2_Hammond_Bismut.fidelitycard.*;
 
 /**
  * Cette classe représente les commandes des clients

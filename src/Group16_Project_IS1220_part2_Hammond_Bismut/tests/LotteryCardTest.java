@@ -5,11 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import Group16_Project_IS1220_part2_Hammond_Bismut.EYMSCore.Restaurant;
-import Group16_Project_IS1220_part2_Hammond_Bismut.fidelitycard.LotteryCard;
 import Group16_Project_IS1220_part2_Hammond_Bismut.menu.Meal;
 import Group16_Project_IS1220_part2_Hammond_Bismut.orders.OrderManager;
 import Group16_Project_IS1220_part2_Hammond_Bismut.users.Client;
 import Group16_Project_IS1220_part2_Hammond_Bismut.users.Client.CardType;
+import Group16_Project_IS1220_part2_Hammond_Bismut.fidelitycard.LotteryCard;
 
 public class LotteryCardTest {
 

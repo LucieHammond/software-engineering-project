@@ -1,9 +1,10 @@
-package Group16_Project_IS1220_part2_Hammond_Bismut.EYMSCore;
+package Group16_Project_IS1220_part2_Hammond_Bismut.userInterface;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import Group16_Project_IS1220_part2_Hammond_Bismut.EYMSCore.CoreSystem;
 import Group16_Project_IS1220_part2_Hammond_Bismut.menu.MenuManager;
 import Group16_Project_IS1220_part2_Hammond_Bismut.notifications.BirthdayNotification;
 import Group16_Project_IS1220_part2_Hammond_Bismut.notifications.NewOfferNotification;

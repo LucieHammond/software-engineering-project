@@ -8,9 +8,9 @@ import org.junit.Test;
 
 import Group16_Project_IS1220_part2_Hammond_Bismut.EYMSCore.CoreSystem;
 import Group16_Project_IS1220_part2_Hammond_Bismut.EYMSCore.Restaurant;
-import Group16_Project_IS1220_part2_Hammond_Bismut.fidelitycard.*;
 import Group16_Project_IS1220_part2_Hammond_Bismut.users.Client;
 import Group16_Project_IS1220_part2_Hammond_Bismut.users.Client.*;
+import Group16_Project_IS1220_part2_Hammond_Bismut.fidelitycard.*;
 import Group16_Project_IS1220_part2_Hammond_Bismut.users.Registration;
 
 public class RegistrationTest {
