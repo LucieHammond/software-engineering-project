@@ -41,6 +41,14 @@ public class CommandLineInterface {
 		System.out.println("Le système est éteint. Alllumez-le pour commencer");
 	}
 
+	/**
+	 * Analyse et demande à faire exécuter la ligne de commande tapée par l'utilisateur.
+	 * Après avoir fait vérifier la syntaxe générale de la commande en appelant 
+	 * checkInputCommand, cette méthode partitionne la ligne pour en dégager les 
+	 * différents paramêtres qui seront ensuite stockés dans un tableau. 
+	 * Enfin, elle appelle checkParameters pour continuer le travail
+	 * @param line
+	 */
 	public void performCommandLine(String line){
 		int number = checkInputCommand(line);
 		if(number!=-1){
@@ -65,6 +73,15 @@ public class CommandLineInterface {
 		}
 	}
 	
+	/**
+	 * Vérifie le nombre et la validité des paramêtres passés dans la commande (entiers,
+	 * nombres décimaux, adresse mail, numéro de téléphone). Dans le cas où les paramêtres
+	 * sont corrects, la méthode appelle executeAction, sinon elle renvoie un message
+	 * d'erreur
+	 * @param args la tableau des arguments de la commande
+	 * @param number le numéro de la commande dans la liste des commandes possibles
+	 * @return
+	 */
 	public boolean checkParameters(String[] args, int number){
 		// On vérifie qu'il y a le bon nombre de paramètres
 		if(args.length!=parametersCount.get(number)){
@@ -253,7 +270,7 @@ public class CommandLineInterface {
 	/**
 	 * Execute l'action correspondant à la commande
 	 * @param args tableau des arguments de la commande qui sont ceux de la méthode appelée
-	 * @param number numéro de la commande
+	 * @param number numéro de la commande dans la liste des commandes possibles
 	 */
 	public void executeAction(String[] args, int number){
 		// Si le système est éteint, on ne peut rien faire tant qu'on ne le démarre pas
@@ -553,6 +570,11 @@ public class CommandLineInterface {
 		return -1;
 	}	
 	
+	/**
+	 * Cette méthode main permet de créer et faire fonctionner l'interface de commande.
+	 * Celle-ci peut interpreter en direct les lignes de commandes tapées par l'utilisateur
+	 * dans un style console
+	 */
 	public static void main(String[] args) {
 		CommandLineInterface clui = new CommandLineInterface();
 		System.out.println("Entrez une commande : ");
