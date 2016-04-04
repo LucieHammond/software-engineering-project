@@ -38,7 +38,7 @@ public class CommandLineInterface {
 		
 		// On met en place une situation initiale
 		CoreSystem.initializeSituation();
-		System.out.println("Le système est éteint. Alllumez-le pour commencer");
+		System.out.println("Le système est éteint. Allumez-le pour commencer");
 	}
 
 	/**
@@ -437,9 +437,17 @@ public class CommandLineInterface {
 			system.getActualRestaurant().showMeals(criteria);
 			break;
 		case 17:
+			if(!(system.getActualRestaurant().getCurrentActivity() instanceof MenuManager)){
+				System.out.println("Vous devez être connecté en tant que chef pour réaliser cette action");
+				return;
+			}
 			new NewOfferNotification(args[0],Double.parseDouble(args[1]), Double.parseDouble(args[2])).notifyClients();
 			break;
 		case 18:
+			if(!(system.getActualRestaurant().getCurrentActivity() instanceof MenuManager)){
+				System.out.println("Vous devez être connecté en tant que chef pour réaliser cette action");
+				return;
+			}
 			new BirthdayNotification().notifyClients();
 			break;
 		case 19:

@@ -159,6 +159,7 @@ public class CoreSystem{
 				return false;
 			}
 		}
+		restaurants.add(new Restaurant(restaurantName));
 		System.out.println("Le restaurantant " + restaurantName + " a été aujouté au système");
 		return true;
 	}
