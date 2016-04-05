@@ -275,7 +275,7 @@ public class CoreSystem{
 			restaurant.login("adeline_G", "777777");
 			if(restaurant.getCurrentActivity() instanceof MenuManager){
 				MenuManager menuManager = (MenuManager) restaurant.getCurrentActivity();
-				menuManager.putInSpecialOffer("Raclette", 18.5);
+				menuManager.putInSpecialOffer("Gratin savoyard", 10.9);
 			}
 			restaurant.logout();
 			break;
@@ -342,10 +342,11 @@ public class CoreSystem{
 			if(restaurant.getCurrentActivity() instanceof OrderManager){
 				OrderManager orderManager = (OrderManager) restaurant.getCurrentActivity();
 				// Avec la commande suivante, on dépense plus de 200€ et on obtient 20 points sur la carte à points
-				orderManager.selectMeal("Raclette", 5);
-				orderManager.selectMeal("Fondue savoyarde", 3);
+				orderManager.selectMeal("Rizotto", 4);
+				orderManager.selectMeal("Fondue savoyarde", 6);
 				orderManager.selectMeal("Tartiflette", 2);
 				orderManager.selectMeal("Gratin savoyard", 1);
+				orderManager.selectMeal("Gâteau au chocolat", 2);
 				orderManager.showModifications();
 				orderManager.saveModifications();
 				
@@ -414,7 +415,7 @@ public class CoreSystem{
 			if(restaurant.getCurrentActivity() instanceof OrderManager){
 				OrderManager orderManager = (OrderManager) restaurant.getCurrentActivity();
 				orderManager.addToFavouriteMeals("Fondue savoyarde");
-				orderManager.addToFavouriteMeals("Raclette");
+				orderManager.addToFavouriteMeals("Tartiflette");
 			}
 			restaurant.modifyClientInfo();
 			if(restaurant.getCurrentActivity() instanceof Registration){
@@ -488,13 +489,12 @@ public class CoreSystem{
 		fondue.getIngredients().add(new Ingredient("Pain", 1));
 		fondue.setSpecialOffer(16.25);
 		
-		Meal raclette = new Meal("Raclette", 21);
-		raclette.getIngredients().add(new Ingredient("Fromage à raclette", 3));
-		raclette.getIngredients().add(new Ingredient("Pommes de terre", 4));
-		raclette.getIngredients().add(new Ingredient("Jambon", 3));
-		raclette.getIngredients().add(new Ingredient("Saucisson", 1));
-		raclette.getIngredients().add(new Ingredient("Oignon", 1));
-		raclette.getIngredients().add(new Ingredient("Poivre", 1));
+		Meal gateau = new Meal("Gâteau au chocolat", 4.5);
+		gateau.getIngredients().add(new Ingredient("Chocolat noir", 2));
+		gateau.getIngredients().add(new Ingredient("Farine", 2));
+		gateau.getIngredients().add(new Ingredient("Oeuf", 4));
+		gateau.getIngredients().add(new Ingredient("Beurre", 1));
+		gateau.getIngredients().add(new Ingredient("Sucre", 2));
 		
 		Meal gratin = new Meal("Gratin savoyard", 13.5);
 		gratin.getIngredients().add(new Ingredient("Oeuf", 4));
@@ -524,7 +524,7 @@ public class CoreSystem{
 		rizotto.getIngredients().add(new Ingredient("Sel", 1));
 	
 		restaurant.getMenu().getMeals().add(tartiflette);
-		restaurant.getMenu().getMeals().add(raclette);
+		restaurant.getMenu().getMeals().add(gateau);
 		restaurant.getMenu().getMeals().add(fondue);
 		restaurant.getMenu().getMeals().add(gratin);
 		restaurant.getMenu().getMeals().add(croziflette);
@@ -557,8 +557,10 @@ public class CoreSystem{
 		// On ajoute des chefs
 		Chef adrien = new Chef ("Adrien", "Trouilloud", "adrien_T","666666");
 		Chef adeline = new Chef("Adeline", "Grattard", "adeline_G", "777777");
+		Chef bob = new Chef("Bob", "Red", "bobred", "123456");
 		restaurant.getChefs().add(adrien);
 		restaurant.getChefs().add(adeline);
+		restaurant.getChefs().add(bob);
 		
 		// On ajoute des commandes
 		Order order1 = new Order(martin, restaurant);
@@ -577,7 +579,7 @@ public class CoreSystem{
 		Meal tartiflette3 = new Meal(tartiflette);
 		tartiflette3.getIngredientsAdded().add(new Ingredient("Magré de canard",3));
 		order3.getMealsToBuy().put(tartiflette3, 2);
-		order3.getMealsToBuy().put(new Meal(raclette), 3);
+		order3.getMealsToBuy().put(new Meal(gateau), 3);
 		order3.getMealsToBuy().put(new Meal(croziflette), 1);
 		
 		Order order4 = new Order(robert,restaurant);

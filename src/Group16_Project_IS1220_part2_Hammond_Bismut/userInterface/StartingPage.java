@@ -66,7 +66,7 @@ public class StartingPage extends JPanel implements ActionListener{
 				JTabbedPane tabbedPane = new JTabbedPane ();
 				tabbedPane.addTab("Restaurant " + restaurant.getName(), 
 						new RestaurantPage(restaurant));
-				tabbedPane.addTab("Acceuil système", this);
+				tabbedPane.addTab("Accueil système", this);
 				gui.setContentPane(tabbedPane);
 				gui.setVisible(true);
 			}

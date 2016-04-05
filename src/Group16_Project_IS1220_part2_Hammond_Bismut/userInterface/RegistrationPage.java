@@ -19,7 +19,6 @@ public class RegistrationPage extends JPanel implements ActionListener{
 	private Registration manager;
 	private JButton[] button = new JButton[10];
 	private JPanel[] row = new JPanel[7];
-	//private JTextField[] field = new JTextField[4];
 	
 	public RegistrationPage(Registration registration){
 		super(new GridLayout(0,1));
@@ -28,12 +27,12 @@ public class RegistrationPage extends JPanel implements ActionListener{
 		button[0] = new JButton("Ajouter un contact");
 		button[1] = new JButton("Retirer un contact");
 		button[2] = new JButton("Choisir le contact à utiliser");
-		button[3] = new JButton("Changer mon accord pour recevoir des notification");
+		button[3] = new JButton("Changer mon accord pour recevoir des notifications");
 		button[4] = new JButton("Changer de carte de fidélité");
 		button[5] = new JButton("Ajouter une adresse");
 		button[6] = new JButton("Indiquer mon anniversaire");
 		button[7] = new JButton("Sauvegarder le profil");
-		button[8] = new JButton("Montrer l'état du profil");
+		button[8] = new JButton("Voir l'état du profil");
 		button[9] = new JButton("Annuler les modifications");
 		for(int i=0;i<10;i++){button[i].addActionListener(this);}
 		for(int i=0;i<2;i++){button[i].setPreferredSize(new Dimension(165,40));}
@@ -63,7 +62,7 @@ public class RegistrationPage extends JPanel implements ActionListener{
 		row[3].add(new JLabel("Autres informations personnelles"));
 		row[4].add(button[4]);
 		row[4].add(button[5]);
-		row[4].add(button[6]);
+		if(manager.getClientUnderRegistration().getBirthday()==null){row[4].add(button[6]);}
 		row[5].add(new JLabel("--------------------------------------------"));
 		row[6].add(button[7]);
 		row[6].add(button[8]);

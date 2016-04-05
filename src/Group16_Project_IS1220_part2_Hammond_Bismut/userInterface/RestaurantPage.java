@@ -195,7 +195,7 @@ public class RestaurantPage extends JPanel implements ActionListener{
 						Registration manager = (Registration) restaurant.getCurrentActivity();
 						setDefaultPanel();
 						JTabbedPane tabbedPane = (JTabbedPane) gui.getContentPane();
-						tabbedPane.insertTab("Profil client", null, new RegistrationPage(manager), null, 0);
+						tabbedPane.insertTab("Gestion du profil", null, new RegistrationPage(manager), null, 0);
 						tabbedPane.setSelectedIndex(0);
 						gui.setContentPane(tabbedPane);
 						gui.setVisible(true);
