@@ -1,28 +1,23 @@
 package Group16_Project_IS1220_part2_Hammond_Bismut.userInterface;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import Group16_Project_IS1220_part2_Hammond_Bismut.EYMSCore.Restaurant;
+import Group16_Project_IS1220_part2_Hammond_Bismut.menu.MenuManager;
+import Group16_Project_IS1220_part2_Hammond_Bismut.orders.OrderManager;
 import Group16_Project_IS1220_part2_Hammond_Bismut.storing.OrderingStrategy.Criteria;
+import Group16_Project_IS1220_part2_Hammond_Bismut.users.*;
 
 public class RestaurantPage extends JPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private GraphicalUserInterface gui = GraphicalUserInterface.getSharedInstance();
 	private Restaurant restaurant;
-	private JButton[] button = new JButton[6];
-	private JPanel[] row = new JPanel[4];
+	private JButton[] button = new JButton[7];
+	private JPanel[] row = new JPanel[6];
 	private JTextField[] field = new JTextField[4];
 	private int fonction;
 
@@ -37,10 +32,13 @@ public class RestaurantPage extends JPanel implements ActionListener{
 		button[3] = new JButton("Voir les commandes passées");
 		button[4] = new JButton("Connexion");
 		button[5] = new JButton("Annuler");
-		for(int i=0;i<6;i++){button[i].addActionListener(this);}
+		button[6] = new JButton("Déconnexion");
+		for(int i=0;i<7;i++){button[i].addActionListener(this);}
 		for(int i=0;i<2;i++){button[i].setPreferredSize(new Dimension(200,50));}
 		for(int i=2;i<4;i++){button[i].setPreferredSize(new Dimension(275,50));}
-		for(int i=0;i<4;i++){field[i] = new JTextField(20);}
+		button[6].setPreferredSize(new Dimension(200,50));
+		for(int i=0;i<3;i++){field[i] = new JTextField(20);}
+		field[3] = new JPasswordField(20);
 		
 		this.setDefaultPanel();
 	}
@@ -76,7 +74,7 @@ public class RestaurantPage extends JPanel implements ActionListener{
 		field[3].setText("");
 		row[1].add(new JLabel("Nom d'utilisateur :"));
 		row[1].add(field[2]);
-		row[2].add(new JLabel("Mot de passe :"));
+		row[2].add(new JLabel("     Mot de passe :"));
 		row[2].add(field[3]);
 		
 		row[3].add(button[4]);
@@ -92,20 +90,20 @@ public class RestaurantPage extends JPanel implements ActionListener{
 		for(int i=0;i<6;i++){
 			row[i] = new JPanel();
 			row[i].setBackground(new Color(145, 215, 245));
-			row[i].setLayout(new FlowLayout(FlowLayout.CENTER,30,30));
+			row[i].setLayout(new FlowLayout(FlowLayout.CENTER,30,10));
 		}
 		if(isChef){row[0].add(new JLabel("Inscription d'un nouveau chef"));}
 		else{row[0].add(new JLabel("Inscription d'un nouveau client"));}
 		
 		for(int i=0;i<4;i++){field[i].setText("");}
 		
-		row[1].add(new JLabel("Prénom :"));
+		row[1].add(new JLabel("              Prénom :"));
 		row[1].add(field[0]);
-		row[2].add(new JLabel("Nom de famille :"));
+		row[2].add(new JLabel("   Nom de famille :"));
 		row[2].add(field[1]);
 		row[3].add(new JLabel("Nom d'utilisateur :"));
 		row[3].add(field[2]);
-		row[4].add(new JLabel("Mot de passe :"));
+		row[4].add(new JLabel("     Mot de passe :"));
 		row[4].add(field[3]);
 		
 		row[5].add(button[4]);
@@ -113,6 +111,21 @@ public class RestaurantPage extends JPanel implements ActionListener{
 		for(int i=0;i<6;i++){
 			this.add(row[i]);
 		}
+	}
+	
+	public void setAfterLoginPanel(){
+		this.removeAll();
+		for(int i=0;i<3;i++){
+			row[i] = new JPanel();
+			row[i].setBackground(new Color(145, 215, 245));
+			row[i].setLayout(new FlowLayout(FlowLayout.CENTER,0,15));
+		}
+		row[0].setLayout(new FlowLayout(FlowLayout.CENTER,0,40));
+		
+		row[0].add(new JLabel("Vous vous trouvez sur la page d'accueil du restaurant " + restaurant.getName()));
+		row[1].add(button[6]);
+		row[2].add(button[3]);
+		for(int i=0;i<3;i++){this.add(row[i]);}	
 	}
 	
 	@Override
@@ -144,6 +157,23 @@ public class RestaurantPage extends JPanel implements ActionListener{
 					System.out.println("le nom d'utilisateur contient des caractères non autorisés");}
 				else{
 					restaurant.login(username, password);
+					if(restaurant.getCurrentUser() instanceof Client){
+						OrderManager manager = (OrderManager) restaurant.getCurrentActivity();
+						setAfterLoginPanel();
+						JTabbedPane tabbedPane = (JTabbedPane) gui.getContentPane();
+						tabbedPane.insertTab("Gestion des commandes", null, new OrderManagerPage(manager), null, 0);
+						tabbedPane.setSelectedIndex(0);
+						gui.setContentPane(tabbedPane);
+						gui.setVisible(true);
+					}else if(restaurant.getCurrentUser() instanceof Chef){
+						MenuManager manager = (MenuManager) restaurant.getCurrentActivity();
+						setAfterLoginPanel();
+						JTabbedPane tabbedPane = (JTabbedPane) gui.getContentPane();
+						tabbedPane.insertTab("Gestion du menu", null, new MenuManagerPage(manager), null, 0);
+						tabbedPane.setSelectedIndex(0);
+						gui.setContentPane(tabbedPane);
+						gui.setVisible(true);
+					}
 				}
 			}else{
 				String firstname = field[0].getText();
@@ -160,13 +190,39 @@ public class RestaurantPage extends JPanel implements ActionListener{
 					System.out.println("le nom d'utilisateur choisi contient des caractères non autorisés");
 				}
 				else{
-					if(fonction==1){restaurant.registerClient(firstname, lastname, username, password);}
-					if(fonction==2){restaurant.insertChef(firstname, lastname, username, password);}
+					if(fonction==1){
+						restaurant.registerClient(firstname, lastname, username, password);
+						Registration manager = (Registration) restaurant.getCurrentActivity();
+						setDefaultPanel();
+						JTabbedPane tabbedPane = (JTabbedPane) gui.getContentPane();
+						tabbedPane.insertTab("Profil client", null, new RegistrationPage(manager), null, 0);
+						tabbedPane.setSelectedIndex(0);
+						gui.setContentPane(tabbedPane);
+						gui.setVisible(true);
+					}
+					if(fonction==2){
+						restaurant.insertChef(firstname, lastname, username, password);
+						MenuManager manager = (MenuManager) restaurant.getCurrentActivity();
+						setAfterLoginPanel();
+						JTabbedPane tabbedPane = (JTabbedPane) gui.getContentPane();
+						tabbedPane.insertTab("Gestion du menu", null, new MenuManagerPage(manager), null, 0);
+						tabbedPane.setSelectedIndex(0);
+						gui.setContentPane(tabbedPane);
+						gui.setVisible(true);
+					}
 				}
 			}
 		}
 		if(e.getSource()==button[5]){
 			this.setDefaultPanel();
+		}
+		if(e.getSource()==button[6]){
+			restaurant.logout();
+			setDefaultPanel();
+			JTabbedPane tabbedPane = (JTabbedPane) gui.getContentPane();
+			tabbedPane.remove(0);
+			gui.setContentPane(tabbedPane);
+			gui.setVisible(true);
 		}
 	}
 
