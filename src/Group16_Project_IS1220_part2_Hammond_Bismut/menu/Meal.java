@@ -251,7 +251,7 @@ public class Meal{
 	public boolean equals(Object obj) {
 		if(obj instanceof Meal){
 			Meal m2 = (Meal) obj;
-			return (m2.getName().equals(this.name));
+			return(m2.getName().equals(this.name) && m2.getIngredientsAdded().equals(ingredientsAdded));
 		}
 		return false;
 	}
@@ -261,6 +261,10 @@ public class Meal{
 	 */
 	@Override
 	public int hashCode() {
-		return name.hashCode();
+		int hashCode = name.hashCode();
+		for(Ingredient ingredient : ingredientsAdded){
+			hashCode+=ingredient.hashCode();
+		}
+		return hashCode;
 	}
 }

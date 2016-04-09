@@ -85,7 +85,7 @@ public class JustOnSaleStrategy implements OrderingStrategy {
 					nextMeal = meal;
 				}
 			}
-			nextMeal.quickOverview(false);
+			nextMeal.quickOverview(true);
 			System.out.println("Commandé " + saleMeals.get(nextMeal) + " fois\n");
 			saleMeals.remove(nextMeal);
 		}

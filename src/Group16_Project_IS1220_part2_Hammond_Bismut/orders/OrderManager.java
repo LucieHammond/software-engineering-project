@@ -187,7 +187,10 @@ public class OrderManager implements Activity{
 		}
 		for(Meal meal : currentOrder.getMealsToBuy().keySet()){
 			if(meal.getName().equals(mealName)){
+				int number = currentOrder.getMealsToBuy().get(meal);
+				currentOrder.getMealsToBuy().remove(meal);
 				meal.addNewIngredient(ingredientName, quantity);
+				currentOrder.getMealsToBuy().put(meal, number);
 				return true;
 			}
 		}

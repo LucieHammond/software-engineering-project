@@ -15,11 +15,35 @@ import Group16_Project_IS1220_part2_Hammond_Bismut.users.Registration;
 public class RegistrationPage extends JPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
-	private GraphicalUserInterface gui = GraphicalUserInterface.getSharedInstance();
-	private Registration manager;
-	private JButton[] button = new JButton[10];
-	private JPanel[] row = new JPanel[7];
 	
+	/**
+	 * L'instance unique et partagée de la fenêtre graphique
+	 */
+	private GraphicalUserInterface gui = GraphicalUserInterface.getSharedInstance();
+	
+	/**
+	 * Le gestionnaire d'inscription associé à la vue graphique représentée par la classe
+	 * RegistrationPage. Chaque bouton de cette page graphique correspond à une méthode
+	 * proposée par la classe Registration.
+	 */
+	private Registration manager;
+	
+	/**
+	 * Tableau des boutons affichés sur la page
+	 */
+	private JButton[] button = new JButton[10];
+	
+	/**
+	 * La liste des conteneurs horizontaux qui structurent graphiquement la page
+	 */
+	private JPanel[] row = new JPanel[7];
+
+	/**
+	 * Le constructeur de la page qui instancie tous les éléments graphiques (JPanels,
+	 * boutons) et qui les affiche sur la page
+	 * @param registration  L'instance de Registration associée à la vue graphique que représnente cette classe
+	 * et qui retient l'état des modifiations
+	 */
 	public RegistrationPage(Registration registration){
 		super(new GridLayout(0,1));
 		this.manager = registration;
@@ -71,6 +95,10 @@ public class RegistrationPage extends JPanel implements ActionListener{
 		for(int i=0;i<7;i++){add(row[i]);}
 	}
 
+	/**
+	 * Méthode qui est appelée lorque l'utilisateur clique sur un bouton. Une disjonction 
+	 * des cas permet de traiter séparément l'action à réaliser pour chaque bouton
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==button[0]){

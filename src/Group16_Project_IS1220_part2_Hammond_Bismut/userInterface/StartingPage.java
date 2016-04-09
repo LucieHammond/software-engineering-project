@@ -16,11 +16,26 @@ import Group16_Project_IS1220_part2_Hammond_Bismut.EYMSCore.Restaurant;
 
 public class StartingPage extends JPanel implements ActionListener{
 
-	private GraphicalUserInterface gui = GraphicalUserInterface.getSharedInstance();
 	private static final long serialVersionUID = 1L;
+	/**
+	 * L'instance unique et partagée de la fenêtre graphique
+	 */
+	private GraphicalUserInterface gui = GraphicalUserInterface.getSharedInstance();
+	
+	/**
+	 * La liste des boutons affichés sur la page
+	 */
 	private JPanel[] row = new JPanel[3];
+	
+	/**
+	 * La liste des conteneurs horizontaux qui structurent la page
+	 */
 	private JButton[] button = new JButton[3];
 
+	/**
+	 * Constructeur de la page de démarrage du système qui met en place tous les éléments
+	 * graphiques
+	 */
 	public StartingPage(){
 		super(new GridLayout(3,1));
 		
@@ -48,6 +63,10 @@ public class StartingPage extends JPanel implements ActionListener{
 		}
 	}
 
+	/**
+	 * Méthode qui est appelée lorque l'utilisateur clique sur un bouton. Une disjonction 
+	 * des cas permet de traiter séparément l'action à réaliser pour chaque bouton
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==button[0]){

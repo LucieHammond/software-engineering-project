@@ -85,7 +85,7 @@ public class MostlyModifiedStrategy implements OrderingStrategy {
 					nextMeal = meal;
 				}
 			}
-			nextMeal.quickOverview(false);
+			nextMeal.quickOverview(true);
 			System.out.println("Commandé " + modifiedMeals.get(nextMeal) + " fois\n");
 			modifiedMeals.remove(nextMeal);
 		}

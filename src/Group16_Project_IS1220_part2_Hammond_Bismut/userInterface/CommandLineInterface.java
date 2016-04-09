@@ -107,7 +107,7 @@ public class CommandLineInterface {
 			}
 			break;
 		case 1: case 7:
-			if(!args[0].matches("^[a-zA-Z\u00C0-\u00ff0-9-/& ]+$")){
+			if(!args[0].matches("^[a-zA-Z\u00C0-\u00ff0-9-/&' ]+$")){
 				System.out.println("le nom du plat contient des caratères non autorisés");
 				return false;
 			}
@@ -117,7 +117,7 @@ public class CommandLineInterface {
 			}
 			break;
 		case 2:
-			if(!args[0].matches("^[a-zA-Z\u00C0-\u00ff-/& ]+$")){
+			if(!args[0].matches("^[a-zA-Z\u00C0-\u00ff-/&' ]+$")){
 				System.out.println("le nom de l'ingrédient contient des caratères non autorisés");
 				return false;
 			}
@@ -127,7 +127,7 @@ public class CommandLineInterface {
 			}
 			break;
 		case 5:
-			if(!args[0].matches("^[a-zA-Z\u00C0-\u00ff0-9-/& ]+$")){
+			if(!args[0].matches("^[a-zA-Z\u00C0-\u00ff0-9-/&' ]+$")){
 				System.out.println("le nom du plat contient des caratères non autorisés");
 				return false;
 			}
@@ -137,11 +137,11 @@ public class CommandLineInterface {
 			}
 			break;
 		case 6:
-			if(!args[0].matches("^[a-zA-Z\u00C0-\u00ff0-9-/& ]+$")){
+			if(!args[0].matches("^[a-zA-Z\u00C0-\u00ff0-9-/&' ]+$")){
 				System.out.println("le nom du plat contient des caratères non autorisés");
 				return false;
 			}
-			if(!args[1].matches("^[a-zA-Z\u00C0-\u00ff-/& ]+$")){
+			if(!args[1].matches("^[a-zA-Z\u00C0-\u00ff-/&' ]+$")){
 				System.out.println("le nom de l'ingrédient contient des caratères non autorisés");
 				return false;
 			}
@@ -151,17 +151,17 @@ public class CommandLineInterface {
 			}
 			break;
 		case 8: case 9: case 36: case 37:
-			if(!args[0].matches("^[a-zA-Z\u00C0-\u00ff0-9-/& ]+$")){
+			if(!args[0].matches("^[a-zA-Z\u00C0-\u00ff0-9-/&' ]+$")){
 				System.out.println("le nom du plat contient des caratères non autorisés");
 				return false;
 			}
 			break;
 		case 11: case 15:
-			if(!args[0].matches("^[a-zA-Z-]+$")){
+			if(!args[0].matches("^[a-zA-Z\u00C0-\u00ff-]+$")){
 				System.out.println("le prénom indiqué contient des caractères non autorisés");
 				return false;
 			}
-			if(!args[1].matches("^[a-zA-Z- ]+$")){
+			if(!args[1].matches("^[a-zA-Z\u00C0-\u00ff- ]+$")){
 				System.out.println("le nom de famille indiqué contient des caractères non autorisés");
 				return false;
 			}
@@ -214,7 +214,7 @@ public class CommandLineInterface {
 			}
 			break;
 		case 17:
-			if(!args[0].matches("^[a-zA-Z\u00C0-\u00ff0-9-/& ]+$")){
+			if(!args[0].matches("^[a-zA-Z\u00C0-\u00ff0-9-/&' ]+$")){
 				System.out.println("le nom du plat contient des caratères non autorisés");
 				return false;
 			}
@@ -246,17 +246,17 @@ public class CommandLineInterface {
 			}
 			break;
 		case 35:
-			if(!args[0].matches("^[a-zA-Z\u00C0-\u00ff0-9-/& ]+$")){
+			if(!args[0].matches("^[a-zA-Z\u00C0-\u00ff0-9-/&' ]+$")){
 				System.out.println("le nom du plat contient des caratères non autorisés");
 				return false;
 			}
-			if(!args[1].matches("^[a-zA-Z\u00C0-\u00ff-/& ]+$")){
+			if(!args[1].matches("^[a-zA-Z\u00C0-\u00ff-/&' ]+$")){
 				System.out.println("le nom de l'ingrédient contient des caratères non autorisés");
 				return false;
 			}
 			break;	
 		case 39:
-			if(!args[0].matches("^[a-zA-Z\u00C0-\u00ff-/& ]+$")){
+			if(!args[0].matches("^[a-zA-Z\u00C0-\u00ff-/&' ]+$")){
 				System.out.println("le nom de l'ingrédient contient des caratères non autorisés");
 				return false;
 			}

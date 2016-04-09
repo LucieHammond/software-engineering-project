@@ -13,11 +13,34 @@ import Group16_Project_IS1220_part2_Hammond_Bismut.menu.MenuManager;
 public class MenuManagerPage extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * L'instance unique et partagée de la fenêtre graphique
+	 */
 	private GraphicalUserInterface gui = GraphicalUserInterface.getSharedInstance();
+	
+	/**
+	 * Le Gestionnaire de menu associé à la vue graphique représentée par cette classe
+	 * MenuMangerPage. Chaque bouton de cette page graphique correspond à une méthode
+	 * proposée par le MenuManager.
+	 */
 	private MenuManager manager;
+	
+	/**
+	 * Le tableau des bouttons de la vue
+	 */
 	private JButton[] button = new JButton[9];
+	
+	/**
+	 * La liste des conteneurs horizontaux qui structurent la vue
+	 */
 	private JPanel[] row = new JPanel[7];
 
+	/**
+	 * Le constructeur du MenuManagerPage. Il instancie la structure de la page (JPanels et
+	 * bouttons) en leur donnant des caractéristiques graphiques
+	 * @param manager Le MenuManager associé à la vue graphique que représnente cette classe
+	 */
 	public MenuManagerPage(MenuManager manager){
 		super(new GridLayout(0,1));
 		this.manager = manager;
@@ -64,19 +87,32 @@ public class MenuManagerPage extends JPanel implements ActionListener {
 		setStartingPanel();
 	}
 	
+	/**
+	 * Met en place la présentation initiale de la page (pour laquelle le titre du haut ne
+	 * fait pas mention du plat en cours de création puiqu'il n'y a pas encore de plat en
+	 * cours de création
+	 */
 	public void setStartingPanel(){
 		row[0].removeAll();
 		row[0].add(new JLabel("Outils de création des plats :"));
 		gui.setVisible(true);
 	}
 	
+	/**
+	 * Met en place la présentation secondaire de la page (pour laquelle le titre du haut
+	 * fait mention du plat en cours de création
+	 */
 	public void setMealToolsPanel(){
 		row[0].removeAll();
 		row[0].add(new JLabel("Création du plat " + 
 				manager.getMealUnderConstruction().getName() + " :"));
 		gui.setVisible(true);
 	}
-	
+
+	/**
+	 * Méthode appelée lorque l'utilisateur clique sur l'un des boutons. Une disjonction des 
+	 * cas permet de traiter séparément l'action à réaliser pour chaque bouton
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==button[0]){

@@ -14,13 +14,47 @@ import Group16_Project_IS1220_part2_Hammond_Bismut.users.*;
 public class RestaurantPage extends JPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * L'instance unique et partagée de la fenêtre graphique
+	 */
 	private GraphicalUserInterface gui = GraphicalUserInterface.getSharedInstance();
+	
+	/**
+	 * Le restaurant associé à cette page d'accueil
+	 */
 	private Restaurant restaurant;
+	
+	/**
+	 * La liste des boutons affichés sur la page
+	 */
 	private JButton[] button = new JButton[7];
+	
+	/**
+	 * La liste des conteneurs horizontaux qui structurent la page
+	 */
 	private JPanel[] row = new JPanel[6];
+	
+	/**
+	 * La liste des JTextField qui vont permettre de rentrer les identifiants des
+	 * utilisateurs qui veulent se connecter ou s'enregistrer sur le système
+	 */
 	private JTextField[] field = new JTextField[4];
+	
+	/**
+	 * Un entier qui permet de différencier les différents cas où l'utilisateur clique sur
+	 * le bouton "Connexion" : 
+	 * 1 si c'est un client qui veut s'enregistrer
+	 * 2 si c'est un chef qui veut s'enregistrer
+	 * 3 si l'utilisateur a déjà un compte et qu'il veut juste se connecter
+	 */
 	private int fonction;
 
+	/**
+	 * Le constructeur de la page d'accueil du restaurant qui instancie tous les éléments
+	 * graphiques (JPanel, JButton, JTextField)
+	 * @param restaurant Le restaurant associé à cette page d'accueil
+	 */
 	public RestaurantPage(Restaurant restaurant){
 		super(new GridLayout(0,1));
 		this.restaurant = restaurant;
@@ -43,6 +77,11 @@ public class RestaurantPage extends JPanel implements ActionListener{
 		this.setDefaultPanel();
 	}
 	
+	/**
+	 * Met en place la situation par défaut avec les quatres boutons principaux
+	 * Inscription Client, Inscription Chef, Me connecter à mon compte et 
+	 * Voir les commandes passées
+	 */
 	public void setDefaultPanel(){
 		this.removeAll();
 		for(int i=0;i<4;i++){
@@ -60,6 +99,9 @@ public class RestaurantPage extends JPanel implements ActionListener{
 		for(int i=0;i<4;i++){this.add(row[i]);}	
 	}
 	
+	/**
+	 * Met en place la configuration de la page pour se connecter
+	 */
 	public void setLoginPanel(){
 		fonction=3;
 		this.removeAll();
@@ -84,6 +126,11 @@ public class RestaurantPage extends JPanel implements ActionListener{
 		}
 	}
 	
+	/**
+	 * Met en place la configuration de la page pour s'enregistrer
+	 * @param isChef booléen qui indique si c'est un chef ou un client qui veut 
+	 * s'enregistrer
+	 */
 	public void setRegistrationPane(boolean isChef){
 		fonction = isChef?2:1;
 		this.removeAll();
@@ -113,6 +160,10 @@ public class RestaurantPage extends JPanel implements ActionListener{
 		}
 	}
 	
+	/**
+	 * Met en place la configuration de la page lorsque l'utilisateur s'est déjà connecté
+	 * (avec un buton déconnexion)
+	 */
 	public void setAfterLoginPanel(){
 		this.removeAll();
 		for(int i=0;i<3;i++){
@@ -128,6 +179,10 @@ public class RestaurantPage extends JPanel implements ActionListener{
 		for(int i=0;i<3;i++){this.add(row[i]);}	
 	}
 	
+	/**
+	 * Méthode qui est appelée lorque l'utilisateur clique sur un bouton. Une disjonction 
+	 * des cas permet de traiter séparément l'action à réaliser pour chaque bouton
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==button[0]){
@@ -180,10 +235,10 @@ public class RestaurantPage extends JPanel implements ActionListener{
 				String lastname = field[1].getText();
 				String username = field[2].getText();
 				String password = field[3].getText();
-				if(!firstname.matches("^[a-zA-Z-]+$")){
+				if(!firstname.matches("^[a-zA-Z\u00C0-\u00ff-]+$")){
 					System.out.println("le prénom indiqué contient des caractères non autorisés");
 				}
-				else if(!lastname.matches("^[a-zA-Z- ]+$")){
+				else if(!lastname.matches("^[a-zA-Z\u00C0-\u00ff- ]+$")){
 					System.out.println("le nom de famille indiqué contient des caractères non autorisés");
 				}
 				else if(!username.matches("^[a-zA-Z0-9&#_.-]+$")){

@@ -14,11 +14,33 @@ import Group16_Project_IS1220_part2_Hammond_Bismut.users.Registration;
 public class OrderManagerPage extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * L'instance unique et partagée de la fenêtre graphique
+	 */
 	private GraphicalUserInterface gui = GraphicalUserInterface.getSharedInstance();
+	
+	/**
+	 * Le gestionnaire de commande associé à la page de commande que représente cette classe
+	 * Chaque bouton de cette page fait référence à une méthode proposée par l'OrderManager
+	 */
 	private OrderManager manager;
+	
+	/**
+	 * Liste des boutons de cette vue
+	 */
 	private JButton[] button = new JButton[11];
+	
+	/**
+	 * Liste des conteneurs horizontaux qui structurent la page
+	 */
 	private JPanel[] row = new JPanel[7];
 	
+	/**
+	 * Constructeur de la page de commande qui instancie tous les éléments graphiques 
+	 * (JPanels et boutons) et met en place la page version de départ de la page
+	 * @param manager l'OrderManager associé à la vue graphique que représnente cette classe
+	 */
 	public OrderManagerPage(OrderManager manager) {
 		super(new GridLayout(0,1));
 		this.manager = manager;
@@ -45,7 +67,11 @@ public class OrderManagerPage extends JPanel implements ActionListener {
 		setStartingPanel();
 		
 	}
-	
+
+	/**
+	 * Met en place la page pour passer une nouvelle commande (lorsque l'utilisateur a
+	 * cliqué sur le bouton correspondant)
+	 */
 	public void setNewOrderPanel(){
 		this.removeAll();
 		for(int i=0;i<7;i++){
@@ -75,7 +101,12 @@ public class OrderManagerPage extends JPanel implements ActionListener {
 		
 		for(int i=0;i<7;i++){add(row[i]);}
 	}
-	
+
+	/**
+	 * Met en place la page de départ de cette vue (sur laquelle l'utilisateur arrive lorqu'il
+	 * se connecte. Cette page propose deux actions possibles : passer une nouvelle commande
+	 * ou modifier ses informations de profil
+	 */
 	public void setStartingPanel(){
 		this.removeAll();
 		for(int i=0;i<2;i++){
@@ -92,6 +123,10 @@ public class OrderManagerPage extends JPanel implements ActionListener {
 		for(int i=0;i<2;i++){add(row[i]);}
 	}
 
+	/**
+	 * Méthode qui est appelée lorque l'utilisateur clique sur un bouton. Une disjonction 
+	 * des cas permet de traiter séparément l'action à réaliser pour chaque bouton
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Set<Meal> mealsInMenu;
