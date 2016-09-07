@@ -595,7 +595,6 @@ public class CoreSystem{
 		restaurant.getStoredOrders().add(order4);
 		
 		System.out.println("Mise en place de la situation initiale terminée");
-		
 	}
 }
 

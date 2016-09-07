@@ -129,8 +129,13 @@ public class Order {
 	 * @param quantity nombre de fois où le plat apparaît dans la commande 
 	 * c'est à dire nombre de personnes qui vont manger de ce plat
 	 */
-	protected void addMeal(Meal meal, int quantity){	
-		mealsToBuy.put(meal, quantity);
+	protected void addMeal(Meal meal, int quantity){
+		if(!mealsToBuy.containsKey(meal))
+			mealsToBuy.put(meal, quantity);
+		else{
+			int previousQuantity = mealsToBuy.get(meal);
+			mealsToBuy.put(meal,previousQuantity + quantity);
+		}
 	}
 	
 	/**
