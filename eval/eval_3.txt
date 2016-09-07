@@ -1,0 +1,12 @@
+Evaluation 3 : Tester des scénarios modulables à volonté grâce à l’interface utilisateur graphique proposée avec la méthode main de la classe GraphicalUserInterface
+
+Pour lancer l’interface graphique, lancez run à partir de la classe GraphicalUserInterface
+Toutes les instructions de l’utilisateur pourront être données en utilisant la souris ou le clavier sur l’interface graphique mais la plupart des indications sur l’état du système, sur la réussite ou l’échec de votre commande ou sur les informations que vous avez demandé de voir seront encore affichés dans la console.
+
+Comme pour l’interface en ligne de commande, une situation initiale a été installée mais sur le restaurant Le Sun Cafe seulement. 
+
+Toutes les fonctions de la Command Line Interface sont représentées sauf notifyAd et notifyBirthday qui sont néanmoins toujours lancées automatiquement à certains moment du cycle de l’application. Pour voir leur fonctionnement, voici quelques petites astuces :
+
+- pour notyfyAd : elle est appelée automatiquement lorsqu’une offre spéciale est ajoutée, il ne vous reste plus qu’à ajouter l’offre spéciale pour voir son fonctionnement dans la console
+
+- pour notifyBirthday : elle est appelée automatiquement chaque jour à 7h30 du matin ou lors du démarrage du système. Pour vérifier son fonctionnement, éteignez le système et rallumez le.

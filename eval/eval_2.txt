@@ -1,0 +1,80 @@
+Evaluation 2 : Tester des scénarios personnalisables en direct grâce à l’interface en ligne de commande utilisable depuis la méthode main de la classe CommandLineInterface
+
+Voici la liste des 40 commandes qui permettent de tester les fonctionnalités du système :
+
+Démarrage et configuration du système pour commencer (obligatoire)
+- turnOnSystem <>
+- turnOffSystem <>
+- addRestaurant <restaurantName>
+- openInRestaurant <restaurantName>
+
+Actions réalisables dès l’ouverture du système sur un restaurant 
+(sans être nécessairement déjà connecté)
+- login <username,password>
+- logout <>
+- registerClient <firstname,lastname,username,password>
+- insertChef <firstname,lastname,username,password>
+- showMeals <criteria>
+
+Actions réalisables quand l’utilisateur est connecté en tant que chef
+- createMeal<mealName, price>
+- addIngredient <ingredientName,quantity>
+- currentMeal <>
+- saveMeal <>
+- cancelMeal <>
+- removeIngredient <ingredientName>
+- putInSpecialOffer <mealName,newPrice>
+- removeFromSpecialOffer <mealName> 
+- listIngredients <mealName>
+- notifyAd <mealName, oldPrice, newPrice>
+- notifyBirthday <>
+
+Actions réalisables quand l’utilisateur est connecté en tant que client
+(et qu’il se retrouve sur l’interface de commande automatiquement)
+- selectMeal <mealName,quantity>
+- personalizeMeal <mealName,ingredientName,quantity>
+- listIngredients <mealName>
+- beginNewOrder <>
+- showOrder <>
+- cancelOrder <>
+- removePersonalization <mealName,ingredientName>
+- addToFavouriteMeals <mealName>
+- removeFromFavouriteMeals <mealName>
+- saveOrder <>
+- modifyClientInfos <>
+
+Actions réalisables quand l’utilisateur est sur l’interface d’enregistrement d’un profil client (soit au moment de l’inscription soit après avoir fait modifyClientInfos<>)
+- addContactInfo <contactType,info>
+- associateCard <cardType>
+- associateAgreement <agreement>
+- saveAccount <>
+- showAccount <>
+- cancelAccountModifications <>
+- addAddress <address>
+- addBirthday <day,month>
+- chooseContactToUse <contactType>
+- removeContactInfo <contactType>
+
+listIngredients est indiqué deux fois car cette action peut être réalisée à la fois pa un chef que par un client
+
+Remarques sur la syntaxe de la commande :
+Le nom de la commande ne doit pas contenir d’erreurs orthographiques (la casse est prise en compte). Ainsi saveMeal<> sera accepté mais SaveMeal<> et save_meal<> ne le seront pas
+
+Les paramètres doivent être indiqués entre les signes < > et doivent être séparés par une virgule. Ainsi, login<bobred,123456> sera accepté mais login(bobred,123456) et login<bobred;123456> ne le seront pas
+
+L’espace après le nom de la commande et après chaque virgule n’est pas nécessaire.
+Ainsi, login<bobred,123456> sera accepté mais aussi login <bobred, 123456>
+
+L’utilisation des guillemets autour des paramètres indiqués n’est pas obligatoire SAUF lorsque le paramêtre en question est susceptible de contenir une virgule (c’est le cas de l’adresse dans addAddress <address>). Ainsi, login <"bobred","123456"> sera accepté tout comme login <bobred,123456> mais addAddress <5, avenue Sully-Prudhomme, 92290 Châtenay-Malabry> ne sera pas admis
+
+
+Remarques sur la syntaxe des paramètres :
+l’argument contactType peut seulement prendre les valeurs « phone » ou « email » (éventuellement orthographié « e-mail »), peu importe la casse
+
+l’argument cardType peut seulement prendre les valeurs « basic » , « point », ou « lottery » peu importe la casse
+
+l’argument criteria peut seulement prendre les valeurs « unchanged », « mostlyModified » ou « justOnSale » peu importe la casse
+
+l’argument agreement peut seulement prendre les valeurs « true » , « yes », « false » ou « no » peu importe la casse
+
+Le programme vérifie que le paramètre entré correspond bien à ce qui est attendu (en tout cas dans la mesure du possible). Par exemple les numéros de téléphones et les addresses email doivent avoir une forme bien précise. Un message sera indiqué dans la console si le paramètre entré ne respecte pas cette syntaxe

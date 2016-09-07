@@ -1,0 +1,198 @@
+turnOnSystem<>
+openInRestaurant<Le Sun Cafe>
+login<bobred,123456>
+createMeal<Raclette, 16.5>
+addIngredient<fromage,9>
+addIngredient<jambon,4>
+addIngredient<pomme de terre,5>
+currentMeal<>
+saveMeal<>
+
+createMeal<Pizza Margarita,8>
+addIngredient<tomate,3>
+addIngredient<basilic,1>
+addIngredient<mozzarella,2>
+saveMeal<>
+
+createMeal<Pizza Napoletana,9>
+addIngredient<tomate,3>
+addIngredient<anchois,1>
+addIngredient<câpre,1>
+addIngredient<mozzarella,2>
+saveMeal<>
+
+createMeal<Pizza Regina,9>
+addIngredient<tomate,3>
+addIngredient<jambon,3>
+addIngredient<champignons,2>
+addIngredient<olive noire,4>
+addIngredient<mozzarella,2>
+saveMeal<>
+
+createMeal<Pizza Speciale,10>
+addIngredient<tomate,3>
+addIngredient<jambon,3>
+addIngredient<oeuf,1>
+addIngredient<crème fraîche,1>
+addIngredient<ciboulette,1>
+addIngredient<mozzarella,2>
+saveMeal<>
+
+createMeal<Pizza Carbonara,9>
+addIngredient<bacon,2>
+addIngredient<oeuf,1>
+addIngredient<crème mascarpone,1>
+addIngredient<fromage en copeaux,1>
+addIngredient<mozzarella,2>
+saveMeal<>
+
+createMeal<Pizza Pomodoro,10>
+addIngredient<tomate cerise,4>
+addIngredient<roquette,1>
+addIngredient<jambon,3>
+addIngredient<huile d olive,1>
+addIngredient<basilic,1>
+addIngredient<mozzarella,2>
+saveMeal<>
+
+createMeal<Pizza Marroco,11>
+addIngredient<tomate,3>
+addIngredient<merguez,2>
+addIngredient<chorizo,3>
+addIngredient<poivrons,2>
+addIngredient<oeuf,1>
+addIngredient<olive noire,4>
+addIngredient<mozzarella,2>
+saveMeal<>
+
+createMeal<Pizza Végétarienne,10>
+addIngredient<sauce tomate,1>
+addIngredient<courgette,3>
+addIngredient<aubergine,2>
+addIngredient<oignon,2>
+addIngredient<tomate cerise,3>
+addIngredient<olive noire,4>
+addIngredient<mozzarella,2>
+saveMeal<>
+
+createMeal<Pizza 4 Fromages,9>
+addIngredient<sauce tomate, 1>
+addIngredient<gorgonzola,1>
+addIngredient<scamorza,1>
+addIngredient<fromage italien,1>
+addIngredient<mozzarella,2>
+saveMeal<>
+
+createMeal<Pizza Salmone,10>
+addIngredient<crème ricotta aux herbes, 1>
+addIngredient<saumon,2>
+addIngredient<saumon fumé,2>
+addIngredient<épice citronné,1>
+addIngredient<mozzarella,2>
+saveMeal<>
+
+createMeal<Pizza Con Carne,10>
+addIngredient<sauce tomate, 1>
+addIngredient<viande de boeuf,2>
+addIngredient<poivrons,2>
+addIngredient<oignons rouges,2>
+addIngredient<mozzarella,2>
+saveMeal<>
+
+createMeal<Pizza Pollo,9>
+addIngredient<sauce tomate, 1>
+addIngredient<émincé de poulet,4>
+addIngredient<poivrons,2>
+addIngredient<mozzarella,2>
+saveMeal<>
+
+createMeal<Pizza Catania,10>
+addIngredient<sauce tomate, 1>
+addIngredient<thon,3>
+addIngredient<persil,2>
+addIngredient<olive noire,4>
+addIngredient<oignons rouges,2>
+addIngredient<mozzarella,2>
+saveMeal<>
+
+createMeal<Tarte tatin,4.5>
+addIngredient<pomme,4>
+addIngredient<beurre,1>
+addIngredient<sucre,1>
+addIngredient<pâte brisée,1>
+addIngredient<cannelle,1>
+saveMeal<>
+
+createMeal<Crème brûlée,3.5>
+addIngredient<oeuf,4>
+addIngredient<vanille,1>
+addIngredient<sucre,2>
+addIngredient<lait,1>
+addIngredient<cassonade,1>
+addIngredient<crème fleurette,1>
+saveMeal<>
+
+createMeal<Gaufre au chocolat,3>
+addIngredient<farine,3>
+addIngredient<levure,1>
+addIngredient<oeuf,1>
+addIngredient<sucre,3>
+addIngredient<lait,2>
+addIngredient<beurre,2>
+addIngredient<chocolat,2>
+saveMeal<>
+
+createMeal<Gaufre au sucre,3>
+addIngredient<farine,3>
+addIngredient<levure,1>
+addIngredient<oeuf,1>
+addIngredient<sucre,5>
+addIngredient<lait,2>
+addIngredient<beurre,2>
+saveMeal<>
+
+createMeal<Crêpe au chocolat,3>
+addIngredient<farine,2>
+addIngredient<oeuf,3>
+addIngredient<sucre,1>
+addIngredient<lait,3>
+addIngredient<beurre,1>
+addIngredient<chocolat,2>
+saveMeal<>
+
+createMeal<Crêpe au sucre,3>
+addIngredient<farine,2>
+addIngredient<oeuf,3>
+addIngredient<sucre,4>
+addIngredient<lait,3>
+addIngredient<beurre,1>
+saveMeal<>
+
+createMeal<Crêpe à la confiture,3>
+addIngredient<farine,2>
+addIngredient<oeuf,3>
+addIngredient<sucre,1>
+addIngredient<lait,3>
+addIngredient<beurre,1>
+addIngredient<confiture,2>
+saveMeal<>
+
+listIngredients<Raclette>
+logout<>
+
+registerClient<Mario,Rossi,Mario,345678>
+addContactInfo<email,mario_rossi@hotmail.fr>
+addContactInfo<phone,01 23 45 67 89>
+associateCard<point>
+associateAgreement<yes>
+saveAccount<>
+listIngredients<Raclette>
+selectMeal<Raclette,1>
+personalizeMeal<Raclette,fromage,1>
+selectMeal<Raclette,2>
+showOrder<>
+saveOrder<>
+
+login<bobred,123456>
+notifyBirthday<>
+putInSpecialOffer<Raclette,14.75>

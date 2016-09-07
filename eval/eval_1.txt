@@ -1,0 +1,13 @@
+Evaluation 1 : Tester des scénarios pré-enregistrés avec la classe main du CoreSystem
+
+Voici les commandes à taper dans la méthode main de la class CoreSystem pour tester les scenarios pré-enregistrés :
+
+-  initializeSituation() : pour mettre en place une situation initiale qui servira de base aux scénarios d'utilisation. Cette méthode permet un pré-enregistrement de restaurants, clients, chefs, plats et commandes passées
+		
+-  executeScenario(int numero) : pour executer et tester les 14 scenarios prédéfinis et décris en détails dans le rapport. Pour cela, entrez en paramètre le numéro du scénario qui est un entier entre 1 et 14 inclus
+
+Si le code ne s’exécute pas quand vous cliquez sur run, pensez à terminer la précédente exécution et si besoin cliquez une seconde fois sur terminate et run.
+Pour voir les détails de les deux fonctions précédemment appelées, celles-ci sont définies comme des méthodes privées statiques dans la classe CoreSystem. Elles contiennent le code
+des scénarios
+
+Tous les scénarios sont présentés en détail dans le fichier scenarios.txt du dossier eval
